@@ -1,0 +1,28 @@
+{
+  "identifier": "ai4pb-shared-knowledge-graph",
+  "version": "1.0.0",
+  "name": [
+    {
+      "value": "AI4PB Shared Knowledge Graph"
+    }
+  ],
+  "documentation": [
+    {
+      "value": "Schema-compliant shared knowledge graph maintained by OpenCode tools. Runtime-managed concepts are synchronized here, and SystemArchitect can add canonical ArchiMate elements and relationships directly."
+    }
+  ],
+  "metadata": {
+    "schema": "./.opencode/schema/archimate3.1/archimate3.1-exchange-model.schema.json",
+    "schemaversion": "3.1"
+  },
+  "extensions": {
+    "ai4pb": {
+      "managedBy": "opencode",
+      "counters": {},
+      "designSummary": "",
+      "designDecisions": [],
+      "runtime": {},
+      "legacyIntentSource": "design/KG/SystemArchitecture.json"
+    }
+  }
+}
