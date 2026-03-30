@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI 视频制作本地工作台</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="shell">
+      <aside class="sidebar">
+        <div class="panel">
+          <h1>AI 视频制作本地工作台</h1>
+          <p class="muted">本地部署 / 本机浏览器访问 / 人工确认发布</p>
+          <div id="healthBadge" class="badge">连接中...</div>
+        </div>
+
+        <div class="panel">
+          <h2>创建项目</h2>
+          <form id="createProjectForm" class="stack-form">
+            <input name="name" placeholder="项目名称" required />
+            <input name="topic" placeholder="主题" required />
+            <input name="audience" placeholder="受众" required />
+            <input name="style" placeholder="风格" required />
+            <input name="durationSeconds" type="number" value="30" min="10" max="300" required />
+            <input name="goal" placeholder="目标" />
+            <textarea name="notes" rows="3" placeholder="补充说明 / 素材说明"></textarea>
+            <button type="submit">创建本地项目</button>
+          </form>
+        </div>
+
+        <div class="panel">
+          <div class="section-title">
+            <h2>项目列表</h2>
+            <button id="refreshProjectsBtn" class="secondary">刷新</button>
+          </div>
+          <div id="projectList" class="project-list"></div>
+        </div>
+      </aside>
+
+      <main class="main">
+        <div id="projectEmpty" class="panel empty-state">
+          <h2>请选择或新建一个项目</h2>
+          <p>流程包含：项目创建 → Agent 生成 → 编辑确认 → 重生 → 发布素材包准备。</p>
+        </div>
+
+        <div id="projectView" class="hidden">
+          <section class="panel hero" id="projectHero"></section>
+
+          <section class="grid two-columns">
+            <div class="panel">
+              <div class="section-title">
+                <h2>创作 Brief</h2>
+                <div class="action-row">
+                  <button id="generateAllBtn">生成全流程草案</button>
+                  <button id="generateWithBridgeBtn" class="secondary">桥接驱动生成</button>
+                </div>
+              </div>
+              <div id="briefView"></div>
+            </div>
+
+            <div class="panel">
+              <div class="section-title">
+                <h2>Agent Workflow</h2>
+                <div class="action-row">
+                  <button id="runSandboxBridgeBtn" class="secondary">运行 OpenCode 沙箱桥接</button>
+                  <button id="createMediaExportBtn" class="secondary">生成成片导出记录</button>
+                  <button id="prepareExportBtn" class="secondary">准备发布素材包</button>
+                </div>
+              </div>
+              <div id="workflowView"></div>
+              <div id="exportView" class="export-box"></div>
+            </div>
+          </section>
+
+          <section class="grid two-columns">
+            <div class="panel">
+              <div class="section-title">
+                <h2>人工确认发布交接</h2>
+                <button id="recordHandoffBtn">记录人工发布交接</button>
+              </div>
+              <div id="publishStatusView"></div>
+              <div class="action-row handoff-actions">
+                <button id="openExportDirBtn" class="secondary">打开导出目录</button>
+                <button id="openHandoffHtmlBtn" class="secondary">打开交接页</button>
+                <button id="recordOpenChecklistBtn" class="secondary">记录打开交接清单</button>
+                <button id="recordCopyPublishTextBtn" class="secondary">记录复制发布文案</button>
+              </div>
+              <form id="handoffForm" class="stack-form inline-gap">
+                <input name="reviewer" placeholder="交接确认人，例如 本地创作者" value="LocalCreator" />
+                <textarea name="note" rows="3" placeholder="交接备注 / 手动发布提醒"></textarea>
+              </form>
+            </div>
+
+            <div class="panel">
+              <h2>成片导出记录</h2>
+              <div id="mediaOutputView" class="code-box"></div>
+              <div id="demoChecklistView" class="panel nested-panel"></div>
+            </div>
+          </section>
+
+          <section class="panel">
+            <h2>阶段化产物与确认</h2>
+            <div id="artifactGrid" class="artifact-grid"></div>
+          </section>
+
+          <section class="grid two-columns">
+            <div class="panel">
+              <h2>本地资产登记</h2>
+              <form id="assetForm" class="stack-form inline-gap">
+                <input name="name" placeholder="素材名称" required />
+                <input name="kind" placeholder="类型，例如 image / audio / note" required />
+                <input name="path" placeholder="本机路径（可选）" />
+                <textarea name="notes" rows="2" placeholder="备注"></textarea>
+                <button type="submit">登记素材</button>
+              </form>
+              <div id="assetList"></div>
+            </div>
+
+            <div class="panel">
+              <h2>确认记录</h2>
+              <div id="confirmationList"></div>
+            </div>
+          </section>
+
+          <section class="panel">
+            <h2>本地审计日志</h2>
+            <div id="logList" class="log-list"></div>
+          </section>
+        </div>
+      </main>
+    </div>
+
+    <script src="/app.js" defer></script>
+  </body>
+  </html>

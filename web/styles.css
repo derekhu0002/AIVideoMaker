@@ -1,0 +1,218 @@
+:root {
+  color-scheme: dark;
+  --bg: #0f172a;
+  --panel: #111827;
+  --line: #334155;
+  --muted: #94a3b8;
+  --accent: #22c55e;
+  --warn: #f59e0b;
+  --text: #e2e8f0;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: linear-gradient(180deg, #020617, var(--bg));
+  color: var(--text);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.shell {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  min-height: 100vh;
+}
+
+.sidebar {
+  border-right: 1px solid var(--line);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.main {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.panel {
+  background: rgba(15, 23, 42, 0.92);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.24);
+}
+
+.hero {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.grid.two-columns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.artifact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 16px;
+}
+
+.artifact-card {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 14px;
+  background: rgba(2, 6, 23, 0.66);
+}
+
+.stack-form,
+.artifact-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.inline-gap { margin-bottom: 12px; }
+
+input,
+textarea,
+button {
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  background: #020617;
+  color: var(--text);
+  padding: 10px 12px;
+  font: inherit;
+}
+
+textarea { min-height: 120px; resize: vertical; }
+
+button {
+  cursor: pointer;
+  background: linear-gradient(90deg, #16a34a, #22c55e);
+  color: white;
+  font-weight: 700;
+}
+
+button.secondary {
+  background: #1e293b;
+}
+
+.badge,
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(34, 197, 94, 0.12);
+  color: #86efac;
+  border: 1px solid rgba(34, 197, 94, 0.32);
+}
+
+.status-awaiting_confirmation,
+.status-generated,
+.status-edited { color: #fde68a; border-color: rgba(245, 158, 11, 0.28); background: rgba(245, 158, 11, 0.12); }
+.status-confirmed,
+.status-ready_for_export { color: #86efac; }
+.status-draft { color: #cbd5e1; background: rgba(148, 163, 184, 0.12); border-color: rgba(148, 163, 184, 0.22); }
+
+.muted { color: var(--muted); }
+.hidden { display: none; }
+
+.section-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.action-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.publish-box {
+  border: 1px dashed var(--line);
+  border-radius: 12px;
+  padding: 12px;
+  background: rgba(2, 6, 23, 0.55);
+}
+
+.error-banner {
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  background: rgba(239, 68, 68, 0.12);
+  color: #fecaca;
+  border-radius: 12px;
+  padding: 10px 12px;
+}
+
+.nested-panel {
+  margin-top: 12px;
+  padding: 12px;
+}
+
+.artifact-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 8px 0;
+}
+
+.artifact-warning {
+  color: #fbbf24;
+  font-size: 12px;
+}
+
+.project-list,
+.log-list,
+#assetList,
+#confirmationList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.project-item,
+.log-item,
+.record-item,
+.asset-item {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 12px;
+  background: rgba(2, 6, 23, 0.5);
+}
+
+.project-item.active {
+  border-color: rgba(34, 197, 94, 0.7);
+}
+
+.meta-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px 12px;
+}
+
+.code-box,
+.export-box {
+  white-space: pre-wrap;
+  padding: 12px;
+  border-radius: 12px;
+  background: rgba(2, 6, 23, 0.8);
+  border: 1px solid var(--line);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 12px;
+}
+
+@media (max-width: 1080px) {
+  .shell,
+  .grid.two-columns { grid-template-columns: 1fr; }
+}
